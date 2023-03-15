@@ -1,0 +1,16 @@
+Q)Create a table EMPLOYEE have the following fields (emp_id, name,city,dob,adhar_no)
+output:
+mysql> create table Employee(emp_id int,name varchar (20),city varchar (30),dob date,adhar_no int);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc Employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | int         | YES  |     | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| city     | varchar(30) | YES  |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| adhar_no | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
