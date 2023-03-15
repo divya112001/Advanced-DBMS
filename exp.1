@@ -1,5 +1,9 @@
-Q)Create a table EMPLOYEE have the following fields (emp_id, name,city,dob,adhar_no)
-output:
+                 EXPERIMENT NO: 1.1 DDL COMMANDS
+                *******************************
+
+
+Q1)Create a table EMPLOYEE have the following fields (emp_id, name,city,dob,adhar_no)
+
 mysql> create table Employee(emp_id int,name varchar (20),city varchar (30),dob date,adhar_no int);
 Query OK, 0 rows affected (0.01 sec)
 
@@ -21,9 +25,9 @@ Roll_no – Primary key
 Name – does not allow null values
 Age- must be in between (0-99), does not allow null values Gender- default value is ‘m
                
-OUTPUT
 
-create table STUDENT(roll_no int primary key,name varchar(40)not null,age int not null check(age<100),address varchar(50),gender varchar(2) default 'm');
+
+MYSQL>create table STUDENT(roll_no int primary key,name varchar(40)not null,age int not null check(age<100),address varchar(50),gender varchar(2) default 'm');
 
 Query OK, 0 rows affected (0.02 sec)
 
@@ -88,7 +92,7 @@ mysql> DESC DUPLICATE_TABLE;
 +----------+-------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
 
- 5)Create an INVOICE database and having following tables.
+ 5)Create an INVOICE database and having following tables. ???????QUESTION????
  OUTPUT
  mysql> CREATE DATABASE INVOICE;
 
@@ -136,4 +140,4 @@ desc Invoice_master;
 
 
 
-
+//UPDATION
