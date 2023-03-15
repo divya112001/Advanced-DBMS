@@ -94,37 +94,46 @@ mysql> DESC DUPLICATE_TABLE;
 
 -> Customer(id, name, address, city, ph_no)
 OUTPUT
-CREATE TABLE Customer(id int,name varchar(30),address varchar(40),city varchar(50),ph_no int);
+CREATE TABLE Customer(id int primary key,name varchar(30),address varchar(40),city varchar(50),ph_no int);
 Query OK, 0 rows affected (0.02 sec)
-
-mysql> desc Customer;
 +---------+-------------+------+-----+---------+-------+
 | Field   | Type        | Null | Key | Default | Extra |
 +---------+-------------+------+-----+---------+-------+
-| id      | int         | YES  |     | NULL    |       |
+| id      | int         | NO   | PRI | NULL    |       |
 | name    | varchar(30) | YES  |     | NULL    |       |
 | address | varchar(40) | YES  |     | NULL    |       |
 | city    | varchar(50) | YES  |     | NULL    |       |
 | ph_no   | int         | YES  |     | NULL    |       |
 +---------+-------------+------+-----+---------+-------+
-5 rows in set (0.00 sec)
+
+
 -> Product(pid,  pname, price (default 0))
 OUTPUT
-create table Product(pid int,pname varchar(30),price int default'0');
+create table Product(pid int primary key,pname varchar(30),price int default'0');
 Query OK, 0 rows affected (0.02 sec)
 
 mysql> desc Product;
 +-------+-------------+------+-----+---------+-------+
 | Field | Type        | Null | Key | Default | Extra |
 +-------+-------------+------+-----+---------+-------+
-| pid   | int         | YES  |     | NULL    |       |
+| pid   | int         | NO   | PRI | NULL    |       |
 | pname | varchar(30) | YES  |     | NULL    |       |
 | price | int         | YES  |     | 0       |       |
 +-------+-------------+------+-----+---------+-------+
-3 rows in set (0.00 sec)
+
 
 -> Invoice_master(inv_id, cust_id(FK), inv_date)
 OUTPUT
+create table Invoice_master(inv_id int primary key,id int,inv_date date,foreign key(id) references Customer(id));
+desc Invoice_master;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| inv_id   | int  | NO   | PRI | NULL    |       |
+| id       | int  | YES  | MUL | NULL    |       |
+| inv_date | date | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+
 
 
 
