@@ -87,3 +87,44 @@ mysql> DESC DUPLICATE_TABLE;
 | adhar_no | int         | YES  |     | NULL    |       |
 +----------+-------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
+
+ 5)Create an INVOICE database and having following tables.
+ OUTPUT
+ mysql> CREATE DATABASE INVOICE;
+
+-> Customer(id, name, address, city, ph_no)
+OUTPUT
+CREATE TABLE Customer(id int,name varchar(30),address varchar(40),city varchar(50),ph_no int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc Customer;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int         | YES  |     | NULL    |       |
+| name    | varchar(30) | YES  |     | NULL    |       |
+| address | varchar(40) | YES  |     | NULL    |       |
+| city    | varchar(50) | YES  |     | NULL    |       |
+| ph_no   | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+-> Product(pid,  pname, price (default 0))
+OUTPUT
+create table Product(pid int,pname varchar(30),price int default'0');
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc Product;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| pid   | int         | YES  |     | NULL    |       |
+| pname | varchar(30) | YES  |     | NULL    |       |
+| price | int         | YES  |     | 0       |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+-> Invoice_master(inv_id, cust_id(FK), inv_date)
+OUTPUT
+
+
+
