@@ -27,7 +27,7 @@ Age- must be in between (0-99), does not allow null values Gender- default value
                
 
 
-MYSQL>create table STUDENT(roll_no int primary key,name varchar(40)not null,age int not null check(age<100),address varchar(50),gender varchar(2) default 'm');
+mysql>create table STUDENT(roll_no int primary key,name varchar(40)not null,age int not null check(age<100),address varchar(50),gender varchar(2) default 'm');
 
 Query OK, 0 rows affected (0.02 sec)
 
@@ -45,7 +45,7 @@ mysql> desc STUDENT;
 
 3) Create a temporary table STUDENT1 of STUDENT relation.
 OUTPUT
-create temporary table STUDENT1 select * FROM STUDENT;
+mysql>create temporary table STUDENT1 select * FROM STUDENT;
 
 Query OK, 0 rows affected (0.01 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -76,7 +76,7 @@ mysql> DESC STUDENT1;
 
 4)Create a duplicate table of EMPLOYEE.
 OUTPUT
-CREATE TABLE IF NOT EXISTS DUPLICATE_TABLE SELECT * FROM Employee;
+mysql>CREATE TABLE IF NOT EXISTS DUPLICATE_TABLE SELECT * FROM Employee;
 Query OK, 0 rows affected (0.02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
@@ -98,7 +98,7 @@ mysql> DESC DUPLICATE_TABLE;
 
 -> Customer(id, name, address, city, ph_no)
 OUTPUT
-CREATE TABLE Customer(id int primary key,name varchar(30),address varchar(40),city varchar(50),ph_no int);
+mysql>CREATE TABLE Customer(id int primary key,name varchar(30),address varchar(40),city varchar(50),ph_no int);
 Query OK, 0 rows affected (0.02 sec)
 +---------+-------------+------+-----+---------+-------+
 | Field   | Type        | Null | Key | Default | Extra |
@@ -113,7 +113,7 @@ Query OK, 0 rows affected (0.02 sec)
 
 -> Product(pid,  pname, price (default 0))
 OUTPUT
-create table Product(pid int primary key,pname varchar(30),price int default'0');
+mysql>create table Product(pid int primary key,pname varchar(30),price int default'0');
 Query OK, 0 rows affected (0.02 sec)
 
 mysql> desc Product;
@@ -128,8 +128,8 @@ mysql> desc Product;
 
 -> Invoice_master(inv_id, cust_id(FK), inv_date)
 OUTPUT
-create table Invoice_master(inv_id int primary key,id int,inv_date date,foreign key(id) references Customer(id));
-desc Invoice_master;
+mysql>create table Invoice_master(inv_id int primary key,id int,inv_date date,foreign key(id) references Customer(id));
+mysql>desc Invoice_master;
 +----------+------+------+-----+---------+-------+
 | Field    | Type | Null | Key | Default | Extra |
 +----------+------+------+-----+---------+-------+
