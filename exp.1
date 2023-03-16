@@ -138,6 +138,21 @@ desc Invoice_master;
 | inv_date | date | YES  |     | NULL    |       |
 +----------+------+------+-----+---------+-------+
 
+->Invoice_item(inv_id (FK),  pid(FK), quantity)
+OUTPUT
+mysql> create table Invoice_item(inv_id int,pid int ,quantity int,foreign key(inv_id) references Invoice_master(inv_id),foreign key(pid) references Product(pid));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc Invoice_item;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| inv_id   | int  | YES  | MUL | NULL    |       |
+| pid      | int  | YES  | MUL | NULL    |       |
+| quantity | int  | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
 
 
 //UPDATION
