@@ -13,3 +13,19 @@ mysql> select * from Customer;
 |  6 | Divya   | sreevalsam       | calicut     | 9567098504 |
 +----+---------+------------------+-------------+------------+
 6 rows in set (0.00 sec)
+
+2).List pname, price of all products.
+
+mysql> select distinct pname,price from Product;
++------------+-------+
+| pname      | price |
++------------+-------+
+| soap       |   122 |
+| maggie     |    26 |
+| jelly      |     3 |
+| dinner set |  1020 |
+| book       |   510 |
+| tea        |   255 |
+| dairymilk  |    61 |
++------------+-------+
+7 rows in set (0.00 sec)
