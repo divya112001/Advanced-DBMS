@@ -1,0 +1,192 @@
+a) TCL COMMANDS
+.................
+
+ 1.Commit
+ 
+mysql> set autocommit=off;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
++------+---------+-------------------+------+----------+
+| SSN  | name    | city              | dob  | adhar_no |
++------+---------+-------------------+------+----------+
+|  101 | Divy    | NGO               | 2001 |    12345 |
+|  102 | Nivya   | MUKKAM            | 2003 |    12545 |
+|  103 | Kavya   | Calicut           | 2004 |    62345 |
+|  104 | Amrutha | thiruvanathapuram | 2006 |    32345 |
+|  105 | Anna    | Malapuram         | 2007 |    34345 |
++------+---------+-------------------+------+----------+
+5 rows in set (0.01 sec)
+
+mysql> set autocommit=off;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
++------+---------+-------------------+------+----------+
+| SSN  | name    | city              | dob  | adhar_no |
++------+---------+-------------------+------+----------+
+|  101 | Divy    | NGO               | 2001 |    12345 |
+|  102 | Nivya   | MUKKAM            | 2003 |    12545 |
+|  103 | Kavya   | Calicut           | 2004 |    62345 |
+|  104 | Amrutha | thiruvanathapuram | 2006 |    32345 |
+|  105 | Anna    | Malapuram         | 2007 |    34345 |
++------+---------+-------------------+------+----------+
+5 rows in set (0.01 sec)
+
+mysql> insert into EMPLOYEE values(106,"Alan","karanthur",2008,45676);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
++------+---------+-------------------+------+----------+
+| SSN  | name    | city              | dob  | adhar_no |
++------+---------+-------------------+------+----------+
+|  101 | Divy    | NGO               | 2001 |    12345 |
+|  102 | Nivya   | MUKKAM            | 2003 |    12545 |
+|  103 | Kavya   | Calicut           | 2004 |    62345 |
+|  104 | Amrutha | thiruvanathapuram | 2006 |    32345 |
+|  105 | Anna    | Malapuram         | 2007 |    34345 |
+|  106 | Alan    | karanthur         | 2008 |    45676 |
++------+---------+-------------------+------+----------+
+6 rows in set (0.00 sec)
+
+mysql> 
+...................................................
+
+2).Rollback
+
+mysql> insert into EMPLOYEE values(107,"Naveen","kannur",1994,40676);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
++------+---------+-------------------+------+----------+
+| SSN  | name    | city              | dob  | adhar_no |
++------+---------+-------------------+------+----------+
+|  101 | Divy    | NGO               | 2001 |    12345 |
+|  102 | Nivya   | MUKKAM            | 2003 |    12545 |
+|  103 | Kavya   | Calicut           | 2004 |    62345 |
+|  104 | Amrutha | thiruvanathapuram | 2006 |    32345 |
+|  105 | Anna    | Malapuram         | 2007 |    34345 |
+|  106 | Alan    | karanthur         | 2008 |    45676 |
+|  107 | Naveen  | kannur            | 1994 |    40676 |
++------+---------+-------------------+------+----------+
+7 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
++------+---------+-------------------+------+----------+
+| SSN  | name    | city              | dob  | adhar_no |
++------+---------+-------------------+------+----------+
+|  101 | Divy    | NGO               | 2001 |    12345 |
+|  102 | Nivya   | MUKKAM            | 2003 |    12545 |
+|  103 | Kavya   | Calicut           | 2004 |    62345 |
+|  104 | Amrutha | thiruvanathapuram | 2006 |    32345 |
+|  105 | Anna    | Malapuram         | 2007 |    34345 |
+|  106 | Alan    | karanthur         | 2008 |    45676 |
++------+---------+-------------------+------+----------+
+6 rows in set (0.00 sec)
+
+mysql> 
+..............................................................................................................................
+
+3).Savepoint
+
+mysql> insert into EMPLOYEE values (107,"Arun","paropadi",2001,45656);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into EMPLOYEE values (108,"Anugrah","kakodi",2001,49656);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint B;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into EMPLOYEE values (109,"Ahana","irutty",2003,48656);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint C;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
++------+---------+-------------------+------+----------+
+| SSN  | name    | city              | dob  | adhar_no |
++------+---------+-------------------+------+----------+
+|  101 | Divy    | NGO               | 2001 |    12345 |
+|  102 | Nivya   | MUKKAM            | 2003 |    12545 |
+|  103 | Kavya   | Calicut           | 2004 |    62345 |
+|  104 | Amrutha | thiruvanathapuram | 2006 |    32345 |
+|  105 | Anna    | Malapuram         | 2007 |    34345 |
+|  106 | Alan    | karanthur         | 2008 |    45676 |
+|  107 | Arun    | paropadi          | 2001 |    45656 |
+|  108 | Anugrah | kakodi            | 2001 |    49656 |
+|  109 | Ahana   | irutty            | 2003 |    48656 |
++------+---------+-------------------+------+----------+
+9 rows in set (0.00 sec)
+
+mysql> rollback to B;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
++------+---------+-------------------+------+----------+
+| SSN  | name    | city              | dob  | adhar_no |
++------+---------+-------------------+------+----------+
+|  101 | Divy    | NGO               | 2001 |    12345 |
+|  102 | Nivya   | MUKKAM            | 2003 |    12545 |
+|  103 | Kavya   | Calicut           | 2004 |    62345 |
+|  104 | Amrutha | thiruvanathapuram | 2006 |    32345 |
+|  105 | Anna    | Malapuram         | 2007 |    34345 |
+|  106 | Alan    | karanthur         | 2008 |    45676 |
+|  107 | Arun    | paropadi          | 2001 |    45656 |
+|  108 | Anugrah | kakodi            | 2001 |    49656 |
++------+---------+-------------------+------+----------+
+8 rows in set (0.01 sec)
+
+mysql> 
+............................................................................................................
+
+b) DCL COMMAND
+...............
+
+Create two users user1, user2
+        
+1).GRANT
+
+->Give insert and select privilege to user 1 on customer table in the invoice database.
+->Give update and delete privilege to user 2 on all tables in the invoice database.
+
+mysql> create user 'user1'@'localhost' identified by 'pass1';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create user 'user2'@'localhost' identified by 'pass2';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> grant insert,select on Customer to 'user1'@'localhost';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> grant delete,update on INVOICE.* to 'user2'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+
+2.REVOKE
+                   
+->Remove delete privilege of user 2.
+
+mysql> revoke delete on INVOICE.* from 'user2'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> 
+
+..............................................................................................................
+
+
+
+ 
