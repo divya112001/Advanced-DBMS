@@ -18,26 +18,14 @@ mysql> select * from EMPLOYEE;
 +------+---------+-------------------+------+----------+
 5 rows in set (0.01 sec)
 
-
-
-mysql> select * from EMPLOYEE;
-+------+---------+-------------------+------+----------+
-| SSN  | name    | city              | dob  | adhar_no |
-+------+---------+-------------------+------+----------+
-|  101 | Divy    | NGO               | 2001 |    12345 |
-|  102 | Nivya   | MUKKAM            | 2003 |    12545 |
-|  103 | Kavya   | Calicut           | 2004 |    62345 |
-|  104 | Amrutha | thiruvanathapuram | 2006 |    32345 |
-|  105 | Anna    | Malapuram         | 2007 |    34345 |
-+------+---------+-------------------+------+----------+
-5 rows in set (0.01 sec)
-
 mysql> insert into EMPLOYEE values(106,"Alan","karanthur",2008,45676);
 Query OK, 1 row affected (0.00 sec)
 
-
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
 
 mysql> select * from EMPLOYEE;
+
 +------+---------+-------------------+------+----------+
 | SSN  | name    | city              | dob  | adhar_no |
 +------+---------+-------------------+------+----------+
@@ -87,6 +75,23 @@ mysql> select * from EMPLOYEE;
 |  106 | Alan    | karanthur         | 2008 |    45676 |
 +------+---------+-------------------+------+----------+
 6 rows in set (0.00 sec)
+mysql> insert into EMPLOYEE values(107,"Naveen","kannur",1994,40676);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
++------+---------+-------------------+------+----------+
+| SSN  | name    | city              | dob  | adhar_no |
++------+---------+-------------------+------+----------+
+|  101 | Divy    | NGO               | 2001 |    12345 |
+|  102 | Nivya   | MUKKAM            | 2003 |    12545 |
+|  103 | Kavya   | Calicut           | 2004 |    62345 |
+|  104 | Amrutha | thiruvanathapuram | 2006 |    32345 |
+|  105 | Anna    | Malapuram         | 2007 |    34345 |
+|  106 | Alan    | karanthur         | 2008 |    45676 |
+|  107 | Naveen  | kannur            | 1994 |    40676 |
++------+---------+-------------------+------+----------+
+7 rows in set (0.00 sec)
+
 
 mysql> 
 ..............................................................................................................................
