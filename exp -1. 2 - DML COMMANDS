@@ -519,7 +519,9 @@ mysql> select * from Invoice_master;
 4 rows in set (0.00 sec)
 
 mysql> delete from Customer where ph_no is null;
-Query OK, 1 row affected (0.00 sec)
+Query OK, 1 row affected (0.00 sec) 
+
+//DISPLAY CUSTOMER TABLE
 ..................................................
 5). Delete all records from STUDENT table. 
 
@@ -571,7 +573,7 @@ mysql> select * from Invoice_master;
 
 
 
-
+//VERIFIED
  
  
 
