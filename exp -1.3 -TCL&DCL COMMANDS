@@ -156,11 +156,25 @@ Query OK, 0 rows affected (0.01 sec)
 mysql> create user 'user2'@'localhost' identified by 'pass2';
 Query OK, 0 rows affected (0.01 sec)
 
+mysql> select user from mysql.user;
++------------------+
+| user             |
++------------------+
+| abc              |
+| debian-sys-maint |
+| mysql.infoschema |
+| mysql.session    |
+| mysql.sys        |
+| root             |
+| user1            |
+| user2            |
+| xyz              |
++------------------+
+9 rows in set (0.00 sec)
+
+
 mysql> grant insert,select on Customer to 'user1'@'localhost';
 Query OK, 0 rows affected (0.01 sec)
-
-mysql> grant delete,update on INVOICE.* to 'user2'@'localhost';
-Query OK, 0 rows affected (0.00 sec)
 
 mysql> show grants for 'user1'@'localhost';
 +---------------------------------------------------------------------+
@@ -172,6 +186,8 @@ mysql> show grants for 'user1'@'localhost';
 +---------------------------------------------------------------------+
 3 rows in set (0.00 sec)
 
+mysql> grant delete,update on INVOICE.* to 'user2'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
 
 mysql> show grants for 'user2'@'localhost';
 +----------------------------------------------------+
@@ -191,7 +207,18 @@ mysql> show grants for 'user2'@'localhost';
 mysql> revoke delete on INVOICE.* from 'user2'@'localhost';
 Query OK, 0 rows affected (0.00 sec)
 
+mysql> show grants for user2@'localhost';
++----------------------------------------------------+
+| Grants for user2@localhost                         |
++----------------------------------------------------+
+| GRANT USAGE ON *.* TO `user2`@`localhost`          |
+| GRANT UPDATE ON `INVOICE`.* TO `user2`@`localhost` |
++----------------------------------------------------+
+2 rows in set (0.00 sec)
+
 mysql> 
+
+
 
 ..............................................................................................................
 
