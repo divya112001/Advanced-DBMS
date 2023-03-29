@@ -1,0 +1,89 @@
+                          ACCESSING DATABASE:  (SUBQUERY)
+                        ..................................
+                 
+
+
+mysql> select * from Customer;
++----+---------+------------------+-------------+------------+
+| id | name    | address          | city        | ph_no      |
++----+---------+------------------+-------------+------------+
+|  1 | Amrutha | Kizhaketheruvath | Eranjipalam | 9234567865 |
+|  2 | Anna    | narikuni         | malapuram   | 3234567865 |
+|  3 | Arathi  | Mannarkunnu      | Kakodi      | 9744951197 |
+|  4 | Sali    | chakkalakal      | calicut     | 7234567865 |
+|  5 | Neenu   | chakkatuparamp   | trivandram  | 6234565865 |
+|  6 | Divya   | sreevalsam       | calicut     | 9567098504 |
+|  7 | Manu    | mankav           | calicut     | NULL       |
+|  8 | Kukku   | kara             | kannur      | NULL       |
++----+---------+------------------+-------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from Invoice_master;
++--------+------+------------+
+| inv_id | id   | inv_date   |
++--------+------+------------+
+|    201 |    1 | 2023-03-17 |
+|    202 |    2 | 2023-03-14 |
+|    206 |    6 | 2023-05-11 |
++--------+------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from Invoice_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|    201 |  104 |      500 |
+|    201 |  103 |      500 |
+|    202 |  107 |       15 |
++--------+------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from Product;
++-----+------------+-------+
+| pid | pname      | price |
++-----+------------+-------+
+| 101 | soap       |   122 |
+| 102 | maggie     |    26 |
+| 103 | jelly      |     3 |
+| 104 | dinner set |  1020 |
+| 105 | book       |   510 |
+| 106 | tea        |   255 |
+| 107 | dairymilk  |    61 |
++-----+------------+-------+
+7 rows in set (0.00 sec)
+
+1).List the customer names of invoice date 3rd February 2023.
+
+mysql> select name from Customer where id in(select id from
+Invoice_master where inv_date='2023-03-17');
+
++---------+
+| name    |
++---------+
+| Amrutha |
++---------+
+1 row in set (0.00 sec)
+.........................................................................................
+
+2).List the product name and price of each invoice item.
+
+mysql> select pname,price from Product where pid in(select pid from Invoice_item);
++------------+-------+
+| pname      | price |
++------------+-------+
+| jelly      |     3 |
+| dinner set |  1020 |
+| dairymilk  |    61 |
++------------+-------+
+3 rows in set (0.00 sec)
+.................................................................................
+
+3).List the product names, only include their purchased quantity more than 3.
+
+
+
+
+
+
+
+
