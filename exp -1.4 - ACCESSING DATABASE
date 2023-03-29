@@ -101,7 +101,232 @@ mysql> select * from Customer where city="trivandram" or city="malapuram";
 +----+-------+----------------+------------+------------+
 2 rows in set (0.00 sec)
 
-6).List the invoice details from 1st January 2023 to 15th February 2023
+6).List the invoice details from seventeen th march 2023 to twenty fourth may 2023
+
+mysql> select * from Invoice_master;
++--------+------+------------+
+| inv_id | id   | inv_date   |
++--------+------+------------+
+|    201 |    1 | 2023-03-17 |
+|    202 |    2 | 2023-03-14 |
+|    206 |    6 | 2023-05-11 |
++--------+------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from Invoice_master where inv_date between "2023-03-17" and "2023-05-24";
++--------+------+------------+
+| inv_id | id   | inv_date   |
++--------+------+------------+
+|    201 |    1 | 2023-03-17 |
+|    206 |    6 | 2023-05-11 |
++--------+------+------------+
+2 rows in set (0.00 sec)
+.......................................................................................................
+
+7).List the customer details who not live in ‘trivandram’.
+
+mysql> select * from Customer;
++----+---------+------------------+-------------+------------+
+| id | name    | address          | city        | ph_no      |
++----+---------+------------------+-------------+------------+
+|  1 | Amrutha | Kizhaketheruvath | Eranjipalam | 9234567865 |
+|  2 | Anna    | narikuni         | malapuram   | 3234567865 |
+|  3 | Arathi  | Mannarkunnu      | Kakodi      | 9744951197 |
+|  4 | Sali    | chakkalakal      | calicut     | 7234567865 |
+|  5 | Neenu   | chakkatuparamp   | trivandram  | 6234565865 |
+|  6 | Divya   | sreevalsam       | calicut     | 9567098504 |
++----+---------+------------------+-------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from Customer where city !="trivandram";
++----+---------+------------------+-------------+------------+
+| id | name    | address          | city        | ph_no      |
++----+---------+------------------+-------------+------------+
+|  1 | Amrutha | Kizhaketheruvath | Eranjipalam | 9234567865 |
+|  2 | Anna    | narikuni         | malapuram   | 3234567865 |
+|  3 | Arathi  | Mannarkunnu      | Kakodi      | 9744951197 |
+|  4 | Sali    | chakkalakal      | calicut     | 7234567865 |
+|  6 | Divya   | sreevalsam       | calicut     | 9567098504 |
++----+---------+------------------+-------------+------------+
+5 rows in set (0.00 sec)
+
+............................................................................................
+
+8).List the customers who have no phone number.
+
+mysql> select * from Customer;
++----+---------+------------------+-------------+------------+
+| id | name    | address          | city        | ph_no      |
++----+---------+------------------+-------------+------------+
+|  1 | Amrutha | Kizhaketheruvath | Eranjipalam | 9234567865 |
+|  2 | Anna    | narikuni         | malapuram   | 3234567865 |
+|  3 | Arathi  | Mannarkunnu      | Kakodi      | 9744951197 |
+|  4 | Sali    | chakkalakal      | calicut     | 7234567865 |
+|  5 | Neenu   | chakkatuparamp   | trivandram  | 6234565865 |
+|  6 | Divya   | sreevalsam       | calicut     | 9567098504 |
+|  7 | Manu    | mankav           | calicut     | NULL       |
+|  8 | Kukku   | kara             | kannur      | NULL       |
++----+---------+------------------+-------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from Customer where ph_no is null;
++----+-------+---------+---------+-------+
+| id | name  | address | city    | ph_no |
++----+-------+---------+---------+-------+
+|  7 | Manu  | mankav  | calicut | NULL  |
+|  8 | Kukku | kara    | kannur  | NULL  |
++----+-------+---------+---------+-------+
+2 rows in set (0.00 sec)
+
+..................................................................
+
+9).Display customer names in descending order.
+
+mysql> select * from Customer;
++----+---------+------------------+-------------+------------+
+| id | name    | address          | city        | ph_no      |
++----+---------+------------------+-------------+------------+
+|  1 | Amrutha | Kizhaketheruvath | Eranjipalam | 9234567865 |
+|  2 | Anna    | narikuni         | malapuram   | 3234567865 |
+|  3 | Arathi  | Mannarkunnu      | Kakodi      | 9744951197 |
+|  4 | Sali    | chakkalakal      | calicut     | 7234567865 |
+|  5 | Neenu   | chakkatuparamp   | trivandram  | 6234565865 |
+|  6 | Divya   | sreevalsam       | calicut     | 9567098504 |
+|  7 | Manu    | mankav           | calicut     | NULL       |
+|  8 | Kukku   | kara             | kannur      | NULL       |
++----+---------+------------------+-------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select name from Customer order by  name desc;
++---------+
+| name    |
++---------+
+| Sali    |
+| Neenu   |
+| Manu    |
+| Kukku   |
+| Divya   |
+| Arathi  |
+| Anna    |
+| Amrutha |
++---------+
+8 rows in set (0.00 sec)
+..................................................................
+
+10).Display the customer details sorted in ascending by city and descending by names.
+
+mysql> select * from Customer order by city asc, name desc;
++----+---------+------------------+-------------+------------+
+| id | name    | address          | city        | ph_no      |
++----+---------+------------------+-------------+------------+
+|  4 | Sali    | chakkalakal      | calicut     | 7234567865 |
+|  7 | Manu    | mankav           | calicut     | NULL       |
+|  6 | Divya   | sreevalsam       | calicut     | 9567098504 |
+|  1 | Amrutha | Kizhaketheruvath | Eranjipalam | 9234567865 |
+|  3 | Arathi  | Mannarkunnu      | Kakodi      | 9744951197 |
+|  8 | Kukku   | kara             | kannur      | NULL       |
+|  2 | Anna    | narikuni         | malapuram   | 3234567865 |
+|  5 | Neenu   | chakkatuparamp   | trivandram  | 6234565865 |
++----+---------+------------------+-------------+------------+
+8 rows in set (0.00 sec)
+....................................................................................
+
+11).Find the customer names start with ‘A’.
+mysql> select * from Customer;
++----+---------+------------------+-------------+------------+
+| id | name    | address          | city        | ph_no      |
++----+---------+------------------+-------------+------------+
+|  1 | Amrutha | Kizhaketheruvath | Eranjipalam | 9234567865 |
+|  2 | Anna    | narikuni         | malapuram   | 3234567865 |
+|  3 | Arathi  | Mannarkunnu      | Kakodi      | 9744951197 |
+|  4 | Sali    | chakkalakal      | calicut     | 7234567865 |
+|  5 | Neenu   | chakkatuparamp   | trivandram  | 6234565865 |
+|  6 | Divya   | sreevalsam       | calicut     | 9567098504 |
+|  7 | Manu    | mankav           | calicut     | NULL       |
+|  8 | Kukku   | kara             | kannur      | NULL       |
++----+---------+------------------+-------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select name from Customer where name like "a%";
++---------+
+| name    |
++---------+
+| Amrutha |
+| Anna    |
+| Arathi  |
++---------+
+3 rows in set (0.00 sec)
+....................................................................................
+
+12). Find the customer names who have ‘e’ or ‘a’ in them.
+
+mysql> select name from Customer where name like "%a%" or  name like "%e%";
++---------+
+| name    |
++---------+
+| Amrutha |
+| Anna    |
+| Arathi  |
+| Sali    |
+| Neenu   |
+| Divya   |
+| Manu    |
++---------+
+7 rows in set (0.00 sec)
+.......................................................................................
+
+13).Find the customer names who have at least 3 characters.
+
+mysql> select name from Customer where name like "___%";
++---------+
+| name    |
++---------+
+| Amrutha |
+| Anna    |
+| Arathi  |
+| Sali    |
+| Neenu   |
+| Divya   |
+| Manu    |
+| Kukku   |
++---------+
+8 rows in set (0.00 sec)
+...................................................................................
+
+14).List the names of customers their names have ‘r’ in second position.
+
+mysql> select name from Customer where name like "_r%";
++--------+
+| name   |
++--------+
+| Arathi |
++--------+
+1 row in set (0.00 sec)
+
+.........................................................................
+
+15).Find the customer names start with ‘a’ and are at least 3 characters in length.
+
+mysql> select name from Customer where name like "a__%";
++---------+
+| name    |
++---------+
+| Amrutha |
+| Anna    |
+| Arathi  |
++---------+
+3 rows in set (0.00 sec)
+............................................................................................
+
+
+
+
+
+
+
+
+
+
 
 
 
