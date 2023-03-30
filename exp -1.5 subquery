@@ -134,7 +134,7 @@ mysql> insert into Invoice_item values(201,105,17);
 Query OK, 1 row affected (0.01 sec)
 
 
-mysql> select distinct name from Customer where id in(select id from Invoice_master where inv_id in(select inv_id from Invoice_item group by inv_id having count(*)>2));
+mysql> select distinct name from Customer where id in(select id from Invoice_master where inv_id in(select inv_id from Invoice_item group by inv_id having count(*)>=2));
 +---------+
 | name    |
 +---------+
@@ -147,7 +147,7 @@ mysql> select distinct name from Customer where id in(select id from Invoice_mas
 
 //RESUBMIT
 
-
+//VERIFIED
 
 
 
