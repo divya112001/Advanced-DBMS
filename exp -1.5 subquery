@@ -128,15 +128,20 @@ mysql> select * from Product where pid in(select pid from Invoice_item where inv
 1 row in set (0.01 sec)
 .....................................................................................
 
-7).List the names of all customers who have purchased at least 1 products, make sure that no duplicate names in the result. //WRONG QUERY
+7).List the names of all customers who have purchased at least 1 products, make sure that no duplicate names in the result. 
 
-mysql> select distinct name from Customer where id in(select id from Invoice_master where inv_id in(select inv_id from Invoice_item group by inv_id having count(*)>1));
+mysql> insert into Invoice_item values(201,105,17);
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> select distinct name from Customer where id in(select id from Invoice_master where inv_id in(select inv_id from Invoice_item group by inv_id having count(*)>2));
 +---------+
 | name    |
 +---------+
 | Amrutha |
 +---------+
 1 row in set (0.00 sec)
+
 ..............................................................................................
 
 
