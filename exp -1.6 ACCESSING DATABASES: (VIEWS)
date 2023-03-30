@@ -32,3 +32,4 @@ mysql> select * from invoice_product;
 +---------+--------+-----+----------+
 3 rows in set (0.01 sec)
 ................................................
+//VERIFIED
