@@ -1,0 +1,34 @@
+                                         ACCESSING DATABASES: (VIEWS)
+                                        ******************************
+
+1).Create a view for customers who have purchased products.
+
+mysql> create view Customer1 as select * from Customer where id in(select id from Invoice_master);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from Customer1;
++----+---------+------------------+-------------+------------+
+| id | name    | address          | city        | ph_no      |
++----+---------+------------------+-------------+------------+
+|  1 | Amrutha | Kizhaketheruvath | Eranjipalam | 9234567865 |
+|  2 | Anna    | narikuni         | malapuram   | 3234567865 |
+|  6 | Divya   | sreevalsam       | calicut     | 9567098504 |
++----+---------+------------------+-------------+------------+
+3 rows in set (0.01 sec)
+............................................................................
+
+2. Create a view for invoice products[cust_name, , inv_id, product_id, quantity]
+
+mysql> create view invoice_product as select Customer.name,Invoice_master.inv_id,Product.pid,Invoice_item.quantity from Customer inner join Invoice_master on Customer.id=Invoice_master.id inner join Invoice_item on Invoice_master.inv_id=Invoice_item.inv_id inner join Product on Product.pid=Invoice_item.pid;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from invoice_product;
++---------+--------+-----+----------+
+| name    | inv_id | pid | quantity |
++---------+--------+-----+----------+
+| Amrutha |    201 | 103 |      500 |
+| Amrutha |    201 | 104 |      500 |
+| Anna    |    202 | 107 |       15 |
++---------+--------+-----+----------+
+3 rows in set (0.01 sec)
+................................................
