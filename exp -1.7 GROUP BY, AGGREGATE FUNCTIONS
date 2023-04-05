@@ -19,7 +19,7 @@ mysql> select * from Product;
 +-----+------------+-------+
 8 rows in set (0.00 sec)
 
-mysql> select pname,price from Product where pname!="pen" order by price  asc;
+mysql> select pname,price from Product where pname!="pen" order by price  asc; //WRONG QUERY
 +------------+-------+
 | pname      | price |
 +------------+-------+
@@ -98,3 +98,5 @@ mysql> select concat (name , "  lives in  ",  city)as cust_info from Customer;
 
 
 
+//WRONG QUERY
+//RESUBMIT
