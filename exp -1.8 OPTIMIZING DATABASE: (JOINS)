@@ -1,0 +1,111 @@
+Experiment 1.8                                     OPTIMIZING DATABASE: (JOINS)
+                                                   *****************************
+   
+   
+   mysql> select * from Customer;
++----+---------+------------------+-------------+------------+
+| id | name    | address          | city        | ph_no      |
++----+---------+------------------+-------------+------------+
+|  1 | Amrutha | Kizhaketheruvath | Eranjipalam | 9234567865 |
+|  2 | Anna    | narikuni         | malapuram   | 3234567865 |
+|  3 | Arathi  | Mannarkunnu      | Kakodi      | 9744951197 |
+|  4 | Sali    | chakkalakal      | calicut     | 7234567865 |
+|  5 | Neenu   | chakkatuparamp   | trivandram  | 6234565865 |
+|  6 | Divya   | sreevalsam       | calicut     | 9567098504 |
+|  7 | Manu    | mankav           | calicut     | NULL       |
+|  8 | Kukku   | kara             | kannur      | NULL       |
+|  9 | malu    | narikunni        | Eranjipalam | 9667098504 |
+| 10 | naveen  | iruty            | Eranjipalam | 9667008504 |
++----+---------+------------------+-------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from Product;
++-----+------------+-------+
+| pid | pname      | price |
++-----+------------+-------+
+| 101 | soap       |   122 |
+| 102 | maggie     |    26 |
+| 103 | jelly      |     3 |
+| 104 | dinner set |  1020 |
+| 105 | book       |   510 |
+| 106 | tea        |   255 |
+| 107 | dairymilk  |    61 |
+| 108 | pen        |     5 |
++-----+------------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select * from Invoice_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|    201 |  103 |      500 |
+|    202 |  107 |       15 |
+|    201 |  105 |       17 |
+|    201 |  105 |       17 |
++--------+------+----------+
+4 rows in set (0.00 sec)
+
+
+mysql> select * from Invoice_master;
++--------+------+------------+
+| inv_id | id   | inv_date   |
++--------+------+------------+
+|    201 |    1 | 2023-03-17 |
+|    202 |    2 | 2023-03-14 |
+|    206 |    6 | 2023-05-11 |
++--------+------+------------+
+3 rows in set (0.00 sec)
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+ 1).List the product name and quantity of invoice items.
+ 
+ mysql> select Product.pname,Invoice_item.quantity from Product inner join Invoice_item on Product.pid=Invoice_item.pid;
++-----------+----------+
+| pname     | quantity |
++-----------+----------+
+| jelly     |      500 |
+| dairymilk |       15 |
+| book      |       17 |
+| book      |       17 |
++-----------+----------+
+4 rows in set (0.00 sec)
+......................................................................................................................
+
+2).Display invoice details of the transaction dated ’14-03-2023’.
+
+mysql> select Invoice_master.inv_date,Invoice_master.id,Customer.name,Invoice_item.pid,Product.pname,Invoice_item.quantity from Invoice_master
+inner join Invoice_item on Invoice_master.inv_id=Invoice_item.inv_id inner join Product on Product.pid=Invoice_item.pid inner join Customer on
+Customer.id=Invoice_master.id where inv_date="2023-03-14";
+
++------------+------+------+------+-----------+----------+
+| inv_date   | id   | name | pid  | pname     | quantity |
++------------+------+------+------+-----------+----------+
+| 2023-03-14 |    2 | Anna |  107 | dairymilk |       15 |
++------------+------+------+------+-----------+----------+
+1 row in set (0.00 sec)
+...........................................................................................................
+
+3).Display the customer name, product name, invoice date of purchased item ‘book’.
+
+mysql> select Customer.name,Product.pname,Invoice_master.inv_date from Customer
+inner join Invoice_master on Customer.id=Invoice_master.id inner join Invoice_item on Invoice_master.inv_id=Invoice_item.inv_id inner join Product on Invoice_item.pid=Product.pid where pname="book";
++---------+-------+------------+
+| name    | pname | inv_date   |
++---------+-------+------------+
+| Amrutha | book  | 2023-03-17 |
+| Amrutha | book  | 2023-03-17 |
++---------+-------+------------+
+2 rows in set (0.01 sec)
+
+.......................................................................................................
+
+4).Display all customer details and invoice details must include customer has not purchased items.
+
+
+
+
+
+
+
+
