@@ -19,19 +19,20 @@ mysql> select * from Product;
 +-----+------------+-------+
 8 rows in set (0.00 sec)
 
-mysql> select pname,price from Product where pname!="pen" order by price  asc; //WRONG QUERY
+mysql> select pname,price from Product where pname!='Soap' order by price asc; 
 +------------+-------+
 | pname      | price |
 +------------+-------+
 | jelly      |     3 |
+| pen        |     5 |
 | maggie     |    26 |
 | dairymilk  |    61 |
-| soap       |   122 |
 | tea        |   255 |
 | book       |   510 |
 | dinner set |  1020 |
 +------------+-------+
 7 rows in set (0.00 sec)
+
 ...........................................................................................
 
 2.Find minimum, maximum and average price of products.
