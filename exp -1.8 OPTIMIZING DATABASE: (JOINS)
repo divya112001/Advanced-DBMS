@@ -102,6 +102,24 @@ inner join Invoice_master on Customer.id=Invoice_master.id inner join Invoice_it
 
 4).Display all customer details and invoice details must include customer has not purchased items.
 
+mysql> select name,Invoice_master.inv_id,Invoice_master.inv_date,Product.pname from Customer left join Invoice_master on Customer.id=Invoice_master.id left join Invoice_item on Invoice_master.inv_id=Invoice_item.inv_id left join Product on Product.pid=Invoice_item.pid;
++---------+--------+------------+-----------+
+| name    | inv_id | inv_date   | pname     |
++---------+--------+------------+-----------+
+| Amrutha |    201 | 2023-03-17 | book      |
+| Amrutha |    201 | 2023-03-17 | book      |
+| Amrutha |    201 | 2023-03-17 | jelly     |
+| Anna    |    202 | 2023-03-14 | dairymilk |
+| Arathi  |   NULL | NULL       | NULL      |
+| Sali    |   NULL | NULL       | NULL      |
+| Neenu   |   NULL | NULL       | NULL      |
+| Divya   |    206 | 2023-05-11 | NULL      |
+| Manu    |   NULL | NULL       | NULL      |
+| Kukku   |   NULL | NULL       | NULL      |
+| malu    |   NULL | NULL       | NULL      |
+| naveen  |   NULL | NULL       | NULL      |
++---------+--------+------------+-----------+
+12 rows in set (0.01 sec)
 
 
 
