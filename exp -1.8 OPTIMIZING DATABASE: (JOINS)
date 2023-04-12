@@ -125,5 +125,5 @@ mysql> select name,Invoice_master.inv_id,Invoice_master.inv_date,Product.pname f
 
 
 
-
+//VERIFIED
 
