@@ -1,0 +1,116 @@
+                                 OPTIMIZING DATABASE: (Using Set, arithmetic, logical and special operators)
+                                 ***************************************************************************
+      
+      
+   mysql> select * from Customer;
++----+---------+------------------+-------------+------------+
+| id | name    | address          | city        | ph_no      |
++----+---------+------------------+-------------+------------+
+|  1 | Amrutha | Kizhaketheruvath | Eranjipalam | 9234567865 |
+|  2 | Anna    | narikuni         | malapuram   | 3234567865 |
+|  3 | Arathi  | Mannarkunnu      | Kakodi      | 9744951197 |
+|  4 | Sali    | chakkalakal      | calicut     | 7234567865 |
+|  5 | Neenu   | chakkatuparamp   | trivandram  | 6234565865 |
+|  6 | Divya   | sreevalsam       | calicut     | 9567098504 |
+|  7 | Manu    | mankav           | calicut     | NULL       |
+|  8 | Kukku   | kara             | kannur      | NULL       |
+|  9 | malu    | narikunni        | Eranjipalam | 9667098504 |
+| 10 | naveen  | iruty            | Eranjipalam | 9667008504 |
++----+---------+------------------+-------------+------------+
+10 rows in set (0.00 sec)
+
+
+mysql> select * from Product;
++-----+------------+-------+
+| pid | pname      | price |
++-----+------------+-------+
+| 101 | soap       |   122 |
+| 102 | maggie     |    26 |
+| 103 | jelly      |     3 |
+| 104 | dinner set |  1020 |
+| 105 | book       |   510 |
+| 106 | tea        |   255 |
+| 107 | dairymilk  |    61 |
+| 108 | pen        |     5 |
++-----+------------+-------+
+8 rows in set (0.00 sec)
+
+******************************************************************************************************
+1.Display customer_id, city  who lives either in ‘CLT’ or in ‘TVM’
+
+mysql> select id,city from Customer where city="calicut" or city="trivandram";
++----+------------+
+| id | city       |
++----+------------+
+|  4 | calicut    |
+|  5 | trivandram |
+|  6 | calicut    |
+|  7 | calicut    |
++----+------------+
+4 rows in set (0.00 sec)
+
+******************************************************************************************************
+
+2.Display product details with an updated price amount(new price= old price+5rs)
+
+mysql> select * from Product;
++-----+------------+-------+
+| pid | pname      | price |
++-----+------------+-------+
+| 101 | soap       |   122 |
+| 102 | maggie     |    26 |
+| 103 | jelly      |     3 |
+| 104 | dinner set |  1020 |
+| 105 | book       |   510 |
+| 106 | tea        |   255 |
+| 107 | dairymilk  |    61 |
+| 108 | pen        |     5 |
++-----+------------+-------+
+8 rows in set (0.00 sec)
+
+mysql> update Product set price=price+5;
+Query OK, 8 rows affected (0.00 sec)
+Rows matched: 8  Changed: 8  Warnings: 0
+
+mysql> select * from Product;
++-----+------------+-------+
+| pid | pname      | price |
++-----+------------+-------+
+| 101 | soap       |   127 |
+| 102 | maggie     |    31 |
+| 103 | jelly      |     8 |
+| 104 | dinner set |  1025 |
+| 105 | book       |   515 |
+| 106 | tea        |   260 |
+| 107 | dairymilk  |    66 |
+| 108 | pen        |    10 |
++-----+------------+-------+
+8 rows in set (0.00 sec)
+**************************************************************************************************************
+
+3.Display customer details who doesn’t have phone number and lives in ‘kannur’ city (use logical operators)
+
+mysql> select * from Customer where ph_no is null and city="kannur";
++----+-------+---------+--------+-------+
+| id | name  | address | city   | ph_no |
++----+-------+---------+--------+-------+
+|  8 | Kukku | kara    | kannur | NULL  |
++----+-------+---------+--------+-------+
+1 row in set (0.00 sec)
+
+******************************************************************************************************************
+
+4.List the product names if it finds any records in the invoice items table has quantity =3 (use special operators)
+
+mysql> select pname from Product where pid in(select pid from Invoice_item);
++-----------+
+| pname     |
++-----------+
+| jelly     |
+| book      |
+| dairymilk |
++-----------+
+3 rows in set (0.00 sec)
+***********************************************************************************************************************
+
+
