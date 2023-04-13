@@ -100,17 +100,15 @@ mysql> select * from Customer where ph_no is null and city="kannur";
 
 ******************************************************************************************************************
 
-4.List the product names if it finds any records in the invoice items table has quantity =3 (use special operators)
+4.List the product names if it finds any records in the invoice items table has quantity =17(use special operators)
 
-mysql> select pname from Product where pid in(select pid from Invoice_item); //WRONG QUERY
-+-----------+
-| pname     |
-+-----------+
-| jelly     |
-| book      |
-| dairymilk |
-+-----------+
-3 rows in set (0.00 sec)
+mysql> select pname from Product where pid in(select pid from Invoice_item where quantity=17);
++-------+
+| pname |
++-------+
+| book  |
++-------+
+1 row in set (0.00 sec)
 ***********************************************************************************************************************
 
 
