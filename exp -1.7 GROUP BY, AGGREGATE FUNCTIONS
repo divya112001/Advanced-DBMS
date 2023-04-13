@@ -101,3 +101,4 @@ mysql> select concat (name , "  lives in  ",  city)as cust_info from Customer;
 
 //WRONG QUERY
 //RESUBMIT
+//VERIFIED
