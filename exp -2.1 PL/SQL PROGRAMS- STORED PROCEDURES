@@ -99,3 +99,21 @@ Query OK, 0 rows affected (0.00 sec)
 *********************************************************************************
  3.Create a procedure to display invoice details of a particular customer.
  
+ mysql> delimiter //
+ 
+ mysql> create procedure custp(N varchar(30))begin select Customer.name,Invoice_master.*,Product.pname,Invoice_item.pid,Invoice_item.quantity from Invoice_item inner join Invoice_master on Invoice_master.inv_id=Invoice_item.inv_id inner join Product on Product.pid=Invoice_item.pid inner
+ join Customer on Customer.id=Invoice_master.id where Customer.name=N;end //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call custp('Anna');
+    -> //
++------+--------+------+------------+-----------+------+----------+
+| name | inv_id | id   | inv_date   | pname     | pid  | quantity |
++------+--------+------+------------+-----------+------+----------+
+| Anna |    202 |    2 | 2023-03-14 | dairymilk |  107 |       15 |
++------+--------+------+------------+-----------+------+----------+
+1 row in set (0.00 sec)
+
+
+
+
