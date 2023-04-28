@@ -31,3 +31,40 @@ mysql> select * from cust;
 
 
 2. Create a trigger to handle inserts to the product relation ( if price < 5 the set price to 10).2. Create a trigger to handle inserts to the product relation ( if price < 5 the set price to 10).
+
+mysql> delimiter **
+mysql> create trigger ch_pr
+    -> before insert
+    -> on Product
+    -> for each row
+    -> begin
+    -> if new.price<5
+    -> then
+    -> set new.Price=10;
+    -> end if;
+    -> end;
+    -> **
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into Product values(501,'munch',4);
+    -> **
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Product;
+    -> **
++-----+------------+-------+
+| pid | pname      | price |
++-----+------------+-------+
+| 101 | soap       |   127 |
+| 102 | maggie     |    31 |
+| 103 | jelly      |     8 |
+| 104 | dinner set |  1025 |
+| 105 | book       |   515 |
+| 106 | tea        |   260 |
+| 107 | dairymilk  |    66 |
+| 108 | pen        |    10 |
+| 501 | munch      |    10 |
++-----+------------+-------+
+9 rows in set (0.00 sec)
+
+*********************************************************************************
