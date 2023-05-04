@@ -37,3 +37,5 @@ mysql> select @name_list;**
 | naveen;malu;Kukku;Manu;Divya;Neenu;Sali;Arathi;Anna;Amrutha; |
 +--------------------------------------------------------------+
 1 row in set (0.00 sec)
+
+//VERIFIED
