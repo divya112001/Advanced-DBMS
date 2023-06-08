@@ -1,0 +1,321 @@
+                         MONGODB -NoSQL-CRUD
+                         
+ASSIGNMENT -3
+
+1. Write a MongoDB query to create an INVOICE database and collections (customer1, products) and its corresponding documents.
+
+Invoice> use invoices
+switched to db invoices
+invoices> db.createCollection("products")
+{ ok: 1 }
+invoices> db.createCollection("customer1")
+
+****************************************************
+
+customer1 collection documents
+*******************************
+
+invoices> db.customer1.insertMany([{ID:"1",Name:"Divya",Address:"Sreevalsam",city:"Kozhikode",phone:"9567098504"},{ID:"2",Name:"Navya",Address:"Mannarkunnu",city:"NGO",phone:"9567098507"},{ID:"3",Name:"Anugrah",Address:"mutiyat",city:"Kakodi",phone:"9567098544"},{ID:"4",Name:"Adharsh",Address:"thazhat",city:"Kanadikal",phone:"7567098544"},{ID:"5",Name:"Naveen",Address:"thiruthy",city:"Kannur",phone:"9511098544"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("648175bd6cc74d38bc6735ca"),
+    '1': ObjectId("648175bd6cc74d38bc6735cb"),
+    '2': ObjectId("648175bd6cc74d38bc6735cc"),
+    '3': ObjectId("648175bd6cc74d38bc6735cd"),
+    '4': ObjectId("648175bd6cc74d38bc6735ce")
+  }
+}
+
+*************************************************
+products collection documents
+****************************
+
+invoices> db.products.insertMany([{pid:"101",pname:"pen",price:"5"},{pid:"102",pname:"soap",price:"25"},{pid:"103",pname:"pencil",price:"90"},{pid:"104",pname:"milk",price:"30"},{pid:"105",pname:"tea",price:"10"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6480595cfbdfce67982f7ee2"),
+    '1': ObjectId("6480595cfbdfce67982f7ee3"),
+    '2': ObjectId("6480595cfbdfce67982f7ee4"),
+    '3': ObjectId("6480595cfbdfce67982f7ee5"),
+    '4': ObjectId("6480595cfbdfce67982f7ee6")
+  }
+}
+
+***********************************************************************************
+
+2).Write a MongoDB query to find all documents from the collection customer1
+
+invoices> db.customer1.find()
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ca"),
+    ID: '1',
+    Name: 'Divya',
+    Address: 'Sreevalsam',
+    city: 'Kozhikode',
+    phone: '9567098504'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cb"),
+    ID: '2',
+    Name: 'Navya',
+    Address: 'Mannarkunnu',
+    city: 'NGO',
+    phone: '9567098507'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cc"),
+    ID: '3',
+    Name: 'Anugrah',
+    Address: 'mutiyat',
+    city: 'Kakodi',
+    phone: '9567098544'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cd"),
+    ID: '4',
+    Name: 'Adharsh',
+    Address: 'thazhat',
+    city: 'Kanadikal',
+    phone: '7567098544'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ce"),
+    ID: '5',
+    Name: 'Naveen',
+    Address: 'thiruthy',
+    city: 'Kannur',
+    phone: '9511098544'
+  }
+]
+
+***********************************************************************************************************
+ MongoDB query to find all documents from the collection products
+
+invoices> db.products.insertMany([{pid:"101",pname:"pen",price:"5"},{pid:"102",pname:"soap",price:"25"},{pid:"103",pname:"pencil",price:"90"},{pid:"104",pname:"milk",price:"30"},{pid:"105",pname:"tea",price:"10"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6480595cfbdfce67982f7ee2"),
+    '1': ObjectId("6480595cfbdfce67982f7ee3"),
+    '2': ObjectId("6480595cfbdfce67982f7ee4"),
+    '3': ObjectId("6480595cfbdfce67982f7ee5"),
+    '4': ObjectId("6480595cfbdfce67982f7ee6")
+  }
+}
+invoices> 
+invoices> db.products.find()    roll: '1',
+55
+    name: 'Divya',
+56
+    age: '21',
+57
+    address: 'sreevalsam',
+58
+    gender: 'female'
+59
+  },
+60
+  {
+61
+    _id: ObjectId("648050527fc1c2ed0418e000"),
+62
+    roll: '2',
+63
+    name: 'Navya',
+64
+    age: '19',
+65
+    address: 'mannarkunnu',
+66
+    gender: 'female'
+67
+  },
+68
+  {
+69
+    _id: ObjectId("6480507d7fc1c2ed0418e001"),
+70
+    roll: '3',
+71
+    name: 'Aleefa',
+72
+    age: '22',
+73
+    address: 'mukkam',
+74
+    gender: 'female'
+75
+  },
+76
+  {
+77
+    _id: ObjectId("648050a77fc1c2ed0418e002"),
+78
+    roll: '4',
+79
+    name: 'Anugrah',
+80
+    age: '22',
+81
+    address: 'kakodi',
+82
+    gender: 'male'
+83
+  },
+84
+  {
+85
+    _id: ObjectId("648050cd7fc1c2ed0418e003"),
+86
+    roll: '4',
+87
+    name: 'Adharsh',
+88
+    age: '22',
+89
+    address: 'malaparamb',
+90
+    gender: 'male'
+91
+  }
+92
+]
+[
+  {
+    _id: ObjectId("6480595cfbdfce67982f7ee2"),
+    pid: '101',
+    pname: 'pen',
+    price: '5'
+  },
+  {
+    _id: ObjectId("6480595cfbdfce67982f7ee3"),
+    pid: '102',
+    pname: 'soap',
+    price: '25'
+  },
+  {
+    _id: ObjectId("6480595cfbdfce67982f7ee4"),
+    pid: '103',
+    pname: 'pencil',
+    price: '90'
+  },
+  {
+    _id: ObjectId("6480595cfbdfce67982f7ee5"),
+    pid: '104',
+    pname: 'milk',
+    price: '30'
+  },
+  {
+    _id: ObjectId("6480595cfbdfce67982f7ee6"),
+    pid: '105',
+    pname: 'tea',
+    price: '10'
+  }
+]
+**********************************************************************************************
+
+3.Write a MongoDB query to update the city in the collection customer1
+
+invoices> db.customer1.update({'city':'Kozhikode'},{$set:{'city':'eranakullam'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+
+invoices> db.customer1.find()
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ca"),
+    ID: '1',
+    Name: 'Divya',
+    Address: 'Sreevalsam',
+    city: 'eranakullam',
+    phone: '9567098504'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cb"),
+    ID: '2',
+    Name: 'Navya',
+    Address: 'Mannarkunnu',
+    city: 'NGO',
+    phone: '9567098507'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cc"),
+    ID: '3',
+    Name: 'Anugrah',
+    Address: 'mutiyat',
+    city: 'Kakodi',
+    phone: '9567098544'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cd"),
+    ID: '4',
+    Name: 'Adharsh',
+    Address: 'thazhat',
+    city: 'Kanadikal',
+    phone: '7567098544'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ce"),
+    ID: '5',
+    Name: 'Naveen',
+    Address: 'thiruthy',
+    city: 'Kannur',
+    phone: '9511098544'
+  }
+]
+********************************************************************************************
+
+4.Write a MongoDB query to delete the first matched document whose city is “Kannur”.
+
+invoices> db.customer1.deleteOne({city:"Kannur"})
+{ acknowledged: true, deletedCount: 1 }
+invoices> db.customer1.find()
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ca"),
+    ID: '1',
+    Name: 'Divya',
+    Address: 'Sreevalsam',
+    city: 'eranakullam',
+    phone: '9567098504'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cb"),
+    ID: '2',
+    Name: 'Navya',
+    Address: 'Mannarkunnu',
+    city: 'NGO',
+    phone: '9567098507'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cc"),
+    ID: '3',
+    Name: 'Anugrah',
+    Address: 'mutiyat',
+    city: 'Kakodi',
+    phone: '9567098544'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cd"),
+    ID: '4',
+    Name: 'Adharsh',
+    Address: 'thazhat',
+    city: 'Kanadikal',
+    phone: '7567098544'
+  }
+]
+
+
+
+
+
+
