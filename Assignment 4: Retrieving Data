@@ -1,0 +1,200 @@
+                                                 Retrieving Data
+                                                 
+  invoices> db.customer1.find().pretty()
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ca"),
+    ID: '1',
+    Name: 'Divya',
+    Address: 'Sreevalsam',
+    city: 'eranakullam',
+    phone: '9567098504',
+    age: '27'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cb"),
+    ID: '2',
+    Name: 'Navya',
+    Address: 'Mannarkunnu',
+    city: 'NGO',
+    phone: '9567098507',
+    age: '45'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cc"),
+    ID: '3',
+    Name: 'Anugrah',
+    Address: 'mutiyat',
+    city: 'Kakodi',
+    phone: '9567098544',
+    age: '77'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cd"),
+    ID: '4',
+    Name: 'Adharsh',
+    Address: 'thazhat',
+    city: 'Kanadikal',
+    phone: '7567098544',
+    age: '67'
+  }
+]
+invoices> db.customer1.find().pretty()
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ca"),
+    ID: '1',
+    Name: 'Divya',
+    Address: 'Sreevalsam',
+    city: 'eranakullam',
+    phone: '9567098504',
+    age: '27'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cb"),
+    ID: '2',
+    Name: 'Navya',
+    Address: 'Mannarkunnu',
+    city: 'NGO',
+    phone: '9567098507',
+    age: '45'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cc"),
+    ID: '3',
+    Name: 'Anugrah',
+    Address: 'mutiyat',
+    city: 'Kakodi',
+    phone: '9567098544',
+    age: '77'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cd"),
+    ID: '4',
+    Name: 'Adharsh',
+    Address: 'thazhat',
+    city: 'Kanadikal',
+    phone: '7567098544',
+    age: '67'
+  }invoices> db.customer1.find({city:{$ne:'NGO'}}).pretty()
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ca"),
+    ID: '1',
+    Name: 'Divya',
+    Address: 'Sreevalsam',
+    city: 'eranakullam',
+    phone: '9567098504',
+    age: '27'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cc"),
+    ID: '3',
+    Name: 'Anugrah',
+    Address: 'mutiyat',
+    city: 'Kakodi',
+    phone: '9567098544',
+    age: '77'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cd"),
+    ID: '4',
+    Name: 'Adharsh',
+    Address: 'thazhat',
+    city: 'Kanadikal',
+    phone: '7567098544',
+    age: '67'
+  }
+]
+
+]
+                                               
+                                                 
+
+                                                 
+1.Write a MongoDB query to display the customer documents having city ‘eranakullam’,’ngo’.
+
+
+invoices> db.customer1.find({$or:[{'city':'eranakullam'},{'city':'NGO'}]}).pretty()
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ca"),
+    ID: '1',
+    Name: 'Divya',
+    Address: 'Sreevalsam',
+    city: 'eranakullam',
+    phone: '9567098504',
+    age: '27'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cb"),
+    ID: '2',
+    Name: 'Navya',
+    Address: 'Mannarkunnu',
+    city: 'NGO',
+    phone: '9567098507',
+    age: '45'
+  }
+]
+**********************************************************************************************************
+
+2.Write a MongoDB query to display all customer documents who have age >50.
+
+ invoices> db.customer1.find({age:{$gt:'50'}}).pretty()
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cc"),
+    ID: '3',
+    Name: 'Anugrah',
+    Address: 'mutiyat',
+    city: 'Kakodi',
+    phone: '9567098544',
+    age: '77'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cd"),
+    ID: '4',
+    Name: 'Adharsh',
+    Address: 'thazhat',
+    city: 'Kanadikal',
+    phone: '7567098544',
+    age: '67'
+  }
+]
+***************************************************************************************
+
+3 .Write a MongoDB query to find customer documents who not live in ‘NGO0’
+
+invoices> db.customer1.find({city:{$ne:'NGO'}}).pretty()
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ca"),
+    ID: '1',
+    Name: 'Divya',
+    Address: 'Sreevalsam',
+    city: 'eranakullam',
+    phone: '9567098504',
+    age: '27'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cc"),
+    ID: '3',
+    Name: 'Anugrah',
+    Address: 'mutiyat',
+    city: 'Kakodi',
+    phone: '9567098544',
+    age: '77'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cd"),
+    ID: '4',
+    Name: 'Adharsh',
+    Address: 'thazhat',
+    city: 'Kanadikal',
+    phone: '7567098544',
+    age: '67'
+  }
+]
+
+
+
