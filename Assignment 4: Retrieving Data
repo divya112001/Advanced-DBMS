@@ -197,4 +197,4 @@ invoices> db.customer1.find({city:{$ne:'NGO'}}).pretty()
 ]
 
 
-
+//VERIFIED
