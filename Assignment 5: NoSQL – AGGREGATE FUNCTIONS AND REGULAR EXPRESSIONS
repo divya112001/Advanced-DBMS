@@ -1,0 +1,154 @@
+                                     Assignment 5: NoSQL – AGGREGATE FUNCTIONS AND REGULAR EXPRESSIONS
+                                     
+invoices> db.customer1.find().pretty()
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ca"),
+    ID: '1',
+    Name: 'Divya',
+    Address: 'Sreevalsam',
+    city: 'eranakullam',
+    phone: '9567098504',
+    age: '27'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cb"),
+    ID: '2',
+    Name: 'Navya',
+    Address: 'Mannarkunnu',
+    city: 'NGO',
+    phone: '9567098507',
+    age: '45'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cc"),
+    ID: '3',
+    Name: 'Anugrah',
+    Address: 'mutiyat',invoices> db.customer1.find().pretty()
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ca"),
+    ID: '1',
+    Name: 'Divya',
+    Address: 'Sreevalsam',
+    city: 'eranakullam',
+    phone: '9567098504',
+    age: '27'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cb"),
+    ID: '2',
+    Name: 'Navya',
+    Address: 'Mannarkunnu',
+    city: 'NGO',
+    phone: '9567098507',
+    age: '45'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cc"),
+    ID: '3',
+    Name: 'Anugrah',
+    Address: 'mutiyat',
+    city: 'Kakodi',
+    phone: '9567098544',
+    age: '77'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cd"),
+    ID: '4',
+    Name: 'Adharsh',
+    Address: 'thazhat',
+    city: 'Kanadikal',
+    phone: '7567098544',
+    age: '67'
+  }
+]
+
+    city: 'Kakodi',
+    phone: '9567098544',
+    age: '77'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cd"),
+    ID: '4',
+    Name: 'Adharsh',
+    Address: 'thazhat',
+    city: 'Kanadikal',
+    phone: '7567098544',
+    age: '67'
+  }
+]
+                                     
+                                     
+1.Write a MongoDB query to sort customer details in ascending order of their name.
+
+
+invoices> db.customer1.find().sort({Name:1})
+[
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cd"),
+    ID: '4',
+    Name: 'Adharsh',
+    Address: 'thazhat',
+    city: 'Kanadikal',
+    phone: '7567098544',
+    age: '67'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cc"),
+    ID: '3',
+    Name: 'Anugrah',
+    Address: 'mutiyat',
+    city: 'Kakodi',
+    phone: '9567098544',
+    age: '77'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735ca"),
+    ID: '1',
+    Name: 'Divya',
+    Address: 'Sreevalsam',
+    city: 'eranakullam',
+    phone: '9567098504',
+    age: '27'
+  },
+  {
+    _id: ObjectId("648175bd6cc74d38bc6735cb"),
+    ID: '2',
+    Name: 'Navya',
+    Address: 'Mannarkunnu',
+    city: 'NGO',
+    phone: '9567098507',
+    age: '45'
+  }
+]
+*****************************************************************************************************************
+
+2.Write a MongoDB query to count number of customers in each city.
+
+invoices> db.customer1.aggregate([{$group:{_id:"$city",total:{$sum:1}}}])
+[
+  { _id: 'Kakodi', total: 1 },
+  { _id: 'NGO', total: 1 },
+  { _id: 'Kanadikal', total: 1 },
+  { _id: 'eranakullam', total: 1 }
+]
+invoices> 
+******************************************************************************************************************
+
+3.Write a MongoDB query to find minimum and maximum age in each city.
+
+
+
+invoices> db.customer1.aggregate([{$group:{_id:"$city",max_age:{$max:"$age"},min_age:{$min:"$age"}}}])
+[
+  { _id: 'Kanadikal', max_age: '67', min_age: '67' },
+  { _id: 'eranakullam', max_age: '27', min_age: '27' },
+  { _id: 'NGO', max_age: '45', min_age: '45' },
+  { _id: 'Kakodi', max_age: '77', min_age: '77' }
+]
+
+
+                                                  
+                                                  
+                       
