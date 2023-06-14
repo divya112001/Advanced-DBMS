@@ -1,4 +1,4 @@
-                                                 Retrieving Data
+                                                 Retrieving Data.
                                                  
   invoices> db.customer1.find().pretty()
 [
