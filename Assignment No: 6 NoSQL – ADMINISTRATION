@@ -1,0 +1,91 @@
+                                                       Assignment No: 6 NoSQL – ADMINISTRATION
+                                                       
+   1.Write a MongoDB query to create a user “CUSTOMER1” and grant the read role in the INVOICE database.
+       
+        admin> db.createUser({user:"customer4",pwd:"1204",roles:[{role:"read",db:"invoices"}]})
+        { ok: 1 }
+        
+ksb@ksb-H410M-S2-V2:~$  mongosh  -u customer4 -p 1204
+Current Mongosh Log ID:	648ad9e4ba6c68588609504btest> show dbs
+INVOICE    80.00 KiB
+admin     180.00 KiB
+config    108.00 KiB
+invoices  120.00 KiB
+local      80.00 KiB
+mydb      120.00 KiB
+
+Connecting to:		mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.9.1
+Using MongoDB:		6.0.6
+Using Mongosh:		1.9.1
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+ Write a MongoDB query to create the backup for the INVOICE database.
+------
+   The server generated these startup warnings when booting
+   2023-06-15T08:45:24.175+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2023-06-15T08:45:25.021+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2023-06-15T08:45:25.022+00:00: vm.max_map_count is too low
+------
+*********************************************************************************************************************************************************************
+
+  2. Write a MongoDB query to create the backup for the INVOICE database.
+  ksb@ksb-H410M-S2-V2:~$ mongodump --db invoices
+2023-06-15T09:50:40.891+0000	writing invoices.customer1 to dump/invoices/customer1.bson
+2023-06-15T09:50:40.892+0000	writing invoices.customers to dump/invoices/customers.bson
+2023-06-15T09:50:40.892+0000	done dumping invoices.customer1 (5 documents)
+2023-06-15T09:50:40.894+0000	done dumping invoices.customers (5 documents)
+2023-06-15T09:50:40.895+0000	writing invoices.products to dump/invoices/products.bson
+2023-06-15T09:50:40.895+0000	done dumping invoices.products (5 documents)
+
+  
+ ksb@ksb-H410M-S2-V2:~$ mongodump --db invoices
+ 
+2023-06-15T09:50:40.891+0000	writing invoices.customer1 to dump/invoices/customer1.bson
+2023-06-15T09:50:40.892+0000	writing invoices.customers to dump/invoices/customers.bson
+2023-06-15T09:50:40.892+0000	done dumping invoices.customer1 (5 documents)
+2023-06-15T09:50:40.894+0000	done dumping invoices.customers (5 documents)
+2023-06-15T09:50:40.895+0000	writing invoices.products to dump/invoices/products.bson
+2023-06-15T09:50:40.895+0000	done dumping invoices.products (5 documents)
+
+ ************************************************************************************************************************************************************************      
+  3.Write a MongoDB query to restore a particular database or a collection.
+   
+   test> use invoices
+switched to db invoices
+
+invoices> db.dropDatabase()
+{ ok: 1, dropped: 'invoices' }
+
+invoices> show dbs
+INVOICE   80.00 KiB
+admin    180.00 KiB
+config   108.00 KiB
+local     80.00 KiB
+mydb     120.00 KiB
+
+
+ksb@ksb-H410M-S2-V2:~$ mongorestore --db invoices dump/invoices
+2023-06-15T09:55:03.793+0000	The --db and --collection flags are deprecated for this use-case; please use --nsInclude instead, i.e. with --nsInclude=${DATABASE}.${COLLECTION}
+2023-06-15T09:55:03.793+0000	building a list of collections to restore from dump/invoices dir
+2023-06-15T09:55:03.793+0000	reading metadata for invoices.customer1 from dump/invoices/customer1.metadata.json
+2023-06-15T09:55:03.793+0000	reading metadata for invoices.customers from dump/invoices/customers.metadata.json
+2023-06-15T09:55:03.793+0000	reading metadata for invoices.products from dump/invoices/products.metadata.json
+2023-06-15T09:55:03.802+0000	restoring invoices.customer1 from dump/invoices/customer1.bson
+2023-06-15T09:55:03.803+0000	restoring invoices.customers from dump/invoices/customers.bson
+2023-06-15T09:55:03.805+0000	restoring invoices.products from dump/invoices/products.bson
+2023-06-15T09:55:03.812+0000	finished restoring invoices.customer1 (5 documents, 0 failures)
+2023-06-15T09:55:03.815+0000	finished restoring invoices.customers (5 documents, 0 failures)
+2023-06-15T09:55:03.817+0000	finished restoring invoices.products (5 documents, 0 failures)
+2023-06-15T09:55:03.817+0000	no indexes to restore for collection invoices.customer1
+2023-06-15T09:55:03.817+0000	no indexes to restore for collection invoices.customers
+2023-06-15T09:55:03.817+0000	no indexes to restore for collection invoices.products
+2023-06-15T09:55:03.817+0000	15 document(s) restored successfully. 0 document(s) failed to restore.
+
+test> show dbs
+INVOICE    80.00 KiB
+admin     180.00 KiB
+config    108.00 KiB
+invoices  120.00 KiB
+local      80.00 KiB
+mydb      120.00 KiB
+
